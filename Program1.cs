@@ -1,56 +1,48 @@
 void arreglos()
 {
-    string[] nombre = new string[]
-    {
-        "Fernanda", "Melvin", "Luis", "Brandon", "Yamileth"
-    };
+    Console.Write("¿Cuántos alumnos tiene el curso?: ");
+    int numAlumnos = int.Parse(Console.ReadLine());
 
-    int[] notas = new int[]
-    {
-        70,90,43,85,30
-    };
-    int notaMasAlta = notas[0];
-    string nombreNotaMasAlta = nombre[0];
+    string[] nombresAlumnos = new string[numAlumnos];
+    int[] notasAlumnos = new int[numAlumnos];
 
-    foreach (int nota in notas)
+
+    for (int i = 0; i < numAlumnos; i++)
     {
-        if (nota > notaMasAlta)
+        Console.Write($"Ingrese el nombre del alumno número {i + 1}: ");
+        nombresAlumnos[i] = Console.ReadLine();
+
+        Console.Write($"Ahora ingrese la nota del alumno número {i + 1}: ");
+        notasAlumnos[i] = int.Parse(Console.ReadLine());
+    }
+
+  
+    int notaMasAlta = notasAlumnos[0];
+    string nombreNotaMasAlta = nombresAlumnos[0];
+
+    for (int i = 1; i < numAlumnos; i++)
+    {
+        if (notasAlumnos[i] > notaMasAlta)
         {
-            notaMasAlta = nota;
+            notaMasAlta = notasAlumnos[i];
+            nombreNotaMasAlta = nombresAlumnos[i];
         }
     }
 
-    for (int i = 0; i < nombre.Length; i++)
+    int notaMasBaja = notasAlumnos[0];
+    string nombreNotaMasBaja = nombresAlumnos[0];
+
+    for (int i = 1; i < numAlumnos; i++)
     {
-        if (notas[i] == notaMasAlta)
+        if (notasAlumnos[i] < notaMasBaja)
         {
-            nombreNotaMasAlta = nombre[i];
-            break;
+            notaMasBaja = notasAlumnos[i];
+            nombreNotaMasBaja = nombresAlumnos[i];
         }
     }
-    int notaMasBaja = notas[0];
-    string nombreNotaMasBaja = nombre[0];
-
-    foreach (int nota in notas)
-    {
-        if (nota < notaMasBaja)
-        {
-            notaMasBaja = nota;
-        }
-    }
-
-    for (int i = 0; i < nombre.Length; i++)
-    {
-        if (notas[i] == notaMasBaja)
-        {
-            nombreNotaMasBaja = nombre[i];
-            break;
-        }
-    }
-
-    Console.WriteLine($"La nota más alta es {notaMasAlta} y es del alumno {nombreNotaMasAlta}");
-    Console.WriteLine($"La nota más baja es {notaMasBaja} y es del alumno {nombreNotaMasBaja}");
+    Console.WriteLine($"La nota de {nombreNotaMasAlta} es la más alta con: {notaMasAlta}");
+    Console.WriteLine($"La nota de {nombreNotaMasBaja} es la más baja con: {notaMasBaja}\n");
+    Console.WriteLine($"¡Gracias por usar este programa!");
 }
 
 arreglos();
-
